@@ -113,69 +113,71 @@
 
     <!-- Popup Ajouter Transaction -->
     <div
-      id="transactionPopup"
-      class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden flex justify-center items-center"
+    id="transactionPopup"
+    class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden flex justify-center items-center"
     >
-      <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h3 class="text-xl font-bold text-gray-700 mb-4">Ajouter une transaction</h3>
-        <form id="transactionForm">
-          <div class="mb-4">
-            <label for="transactionDate" class="block text-gray-600">Date</label>
-            <input
-              type="date"
-              id="transactionDate"
-              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              
-            />
-          </div>
-          <div class="mb-4">
-            <label for="transactionNumber" class="block text-gray-600">Numéro</label>
-            <input
-              type="text"
-              id="transactionNumber"
-              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              
-            />
-          </div>
-          <div class="mb-4">
-            <label for="transactionType" class="block text-gray-600">Type</label>
-            <select
-              id="transactionType"
-              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              
-            >
-              <option value="retrait">Retrait</option>
-              <option value="depot">Dépôt</option>
-              <option value="transfert">Transfert</option>
-            </select>
-          </div>
-          <div class="mb-4">
-            <label for="transactionAmount" class="block text-gray-600">Montant</label>
-            <input
-              type="number"
-              id="transactionAmount"
-              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              
-            />
-          </div>
-          <div class="flex justify-between mt-6">
-            <button
-              type="button"
-              id="closeModal"
-              class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
-            >
-              Annuler
-            </button>
-            <button
-              type="submit"
-              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-            >
-              Ajouter
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+      <h3 class="text-xl font-bold text-gray-700 mb-4">Ajouter une transaction</h3>
+      <form id="transactionForm">
+        <div class="mb-4">
+          <label for="transactionDate" class="block text-gray-600">Date</label>
+          <input
+            type="date"
+            id="transactionDate"
+            class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
+        <div class="mb-4 relative">
+          <label for="transactionNumber" class="block text-gray-600">Numéro</label>
+          <input
+            type="text"
+            id="transactionNumber"
+            class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="Saisir un numéro"
+          />
+          <ul
+            id="suggestionList"
+            class="absolute border bg-white w-full z-10 hidden rounded-lg"
+          ></ul>
+        </div>
+        <div class="mb-4">
+          <label for="transactionType" class="block text-gray-600">Type</label>
+          <select
+            id="transactionType"
+            class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          >
+            <option value="retrait">Retrait</option>
+            <option value="depot">Dépôt</option>
+            <option value="transfert">Transfert</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="transactionAmount" class="block text-gray-600">Montant</label>
+          <input
+            type="number"
+            id="transactionAmount"
+            class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
+        <div class="flex justify-between mt-6">
+          <button
+            type="button"
+            id="closeModal"
+            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          >
+            Ajouter
+          </button>
+        </div>
+      </form>
     </div>
+    </div>
+
 
     <!-- Popup Ajouter Utilisateur -->
 <div

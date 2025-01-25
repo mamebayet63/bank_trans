@@ -56,36 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayTransactions(transactions) {
     transactionsTable.innerHTML = '';
-  
-    if (transactions.length === 0) {
-      transactionsTable.innerHTML = `
-        <tr>
-          <td colspan="4" class="text-center py-4">Aucune transaction disponible</td>
-        </tr>
-      `;
-      return;
-    }
-  
     transactions.forEach((transaction) => {
-      const { date = '-', numero = '-', type = '-', montant = 0 } = transaction;
-      const formattedMontant = new Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'XOF',
-        minimumFractionDigits: 0,
-      }).format(montant);
-  
       const row = document.createElement('tr');
       row.classList.add('border-b', 'hover:bg-gray-100');
       row.innerHTML = `
-        <td class="px-4 py-2">${date}</td>
-        <td class="px-4 py-2">${numero}</td>
-        <td class="px-4 py-2">${type}</td>
-        <td class="px-4 py-2">${formattedMontant}</td>
+        <td class="px-4 py-2">${transaction.date}</td>
+        <td class="px-4 py-2">${transaction.numero}</td>
+        <td class="px-4 py-2">${transaction.type}</td>
+        <td class="px-4 py-2">${transaction.montant} FCFA</td>
       `;
       transactionsTable.appendChild(row);
     });
   }
-  
 
   changeUserButton.addEventListener('click', () => {
     if (users.length > 0) {
@@ -131,13 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     // Validation du téléphone
-    if (!telephone.value.trim()) {
-      showError(telephone, "Le numéro de téléphone est obligatoire.");
-      isValide = false;
-    } else if (!/^(77|78|76|75|70)\d{7}$/.test(telephone.value)) {
-      showError(telephone, "Le numéro de téléphone doit comporter 9 chiffres et commencer par 77, 78, 76, 75 ou 70.");
-      isValide = false;
-    } 
+  if (!telephone.value.trim()) {
+    showError(telephone, "Le numéro de téléphone est obligatoire.");
+    isValide = false;
+  } else if (!/^(77|78|76|75|70)\d{7}$/.test(telephone.value)) {
+    showError(telephone, "Le numéro de téléphone doit comporter 9 chiffres et commencer par 77, 78, 76, 75 ou 70.");
+    isValide = false;
+  } else {
+    clearError(telephone); // Suppression du message d'erreur si valide
+  }
 
   
     // Validation du montant
@@ -289,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fermer le formulaire
   closeUserModal.addEventListener('click', () => {
     userPopup.classList.add('hidden');
+    
   });
 
   
